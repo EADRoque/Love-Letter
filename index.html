@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Letter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="envelope-wrapper">
+            <div class="envelope">
+                <div class="letter">
+                    <div class="text">
+                        <strong>Dear Sister,</strong>
+                        <p id="message"></p> <!-- Add an id to the paragraph element -->
+                    </div>
+                </div>
+            </div>
+            <div class="heart"></div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+        const envelope = document.querySelector('.envelope-wrapper');
+        const messageParagraph = document.getElementById('message'); // Select the paragraph by id
+
+        // Flag to track whether the flap animation is ongoing
+        let flapAnimationInProgress = false;
+
+        // Event listener to toggle flap class on click
+        envelope.addEventListener('click', () => {
+            if (!flapAnimationInProgress) {
+                envelope.classList.toggle('flap');
+            }
+        });
+
+        // Event listener for transitionend event to detect completion of flap animation
+        envelope.addEventListener('transitionend', (event) => {
+            // Check if the transition ended on the envelope-wrapper element
+            if (event.target === envelope) {
+                flapAnimationInProgress = false;
+                // Call setRandomMessage() when flap animation is complete
+                setRandomMessage();
+            }
+        });
+
+        const heart = document.querySelector('.heart'); // Select the heart element
+
+        // Event listener to change message when the heart is clicked
+        heart.addEventListener('click', () => {
+            if (!flapAnimationInProgress) {
+                setRandomMessage(); // Call setRandomMessage() to update the message
+            }
+        });
+
+        const messages = [
+            "Hosea 2:19-20<br>I will betroth you to me forever; I will betroth you in righteousness and justice, in love and compassion. I will betroth you in faithfulness, and you will acknowledge the Lord.",
+            "1 John 4:19<br>We love because he first loved us.",
+            "Hosea 2:23<br>I will plant her for myself in the land; I will show my love to the one I called ‘Not my loved one.’ I will say to those called ‘Not my people,’ ‘You are my people’; and they will say, ‘You are my God.’"
+        ];
+
+        // Function to set random message
+        function setRandomMessage() {
+            const randomIndex = Math.floor(Math.random() * messages.length);
+            messageParagraph.innerHTML = messages[randomIndex];
+        }
+
+        // Set initial random message
+        setRandomMessage();
+        });
+
+    </script>
+</body>
+</html>
