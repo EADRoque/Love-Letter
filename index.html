@@ -9,12 +9,13 @@
 </head>
 <body>
     <div class="container">
+        <p class="brother">From the Brothers of Intra</p>
         <div class="envelope-wrapper">
             <div class="envelope">
                 <div class="letter">
                     <div class="text">
                         <strong>Dear Sister,</strong>
-                        <p id="message"></p> <!-- Add an id to the paragraph element -->
+                        <p id="message"></p> 
                     </div>
                 </div>
             </div>
@@ -24,34 +25,28 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
         const envelope = document.querySelector('.envelope-wrapper');
-        const messageParagraph = document.getElementById('message'); // Select the paragraph by id
+        const messageParagraph = document.getElementById('message'); 
 
-        // Flag to track whether the flap animation is ongoing
         let flapAnimationInProgress = false;
 
-        // Event listener to toggle flap class on click
         envelope.addEventListener('click', () => {
             if (!flapAnimationInProgress) {
                 envelope.classList.toggle('flap');
             }
         });
 
-        // Event listener for transitionend event to detect completion of flap animation
         envelope.addEventListener('transitionend', (event) => {
-            // Check if the transition ended on the envelope-wrapper element
             if (event.target === envelope) {
                 flapAnimationInProgress = false;
-                // Call setRandomMessage() when flap animation is complete
                 setRandomMessage();
             }
         });
 
-        const heart = document.querySelector('.heart'); // Select the heart element
+        const heart = document.querySelector('.heart'); 
 
-        // Event listener to change message when the heart is clicked
         heart.addEventListener('click', () => {
             if (!flapAnimationInProgress) {
-                setRandomMessage(); // Call setRandomMessage() to update the message
+                setRandomMessage(); 
             }
         });
 
@@ -61,15 +56,13 @@
             "Hosea 2:23<br>I will plant her for myself in the land; I will show my love to the one I called ‘Not my loved one.’ I will say to those called ‘Not my people,’ ‘You are my people’; and they will say, ‘You are my God.’"
         ];
 
-        // Function to set random message
         function setRandomMessage() {
             const randomIndex = Math.floor(Math.random() * messages.length);
             messageParagraph.innerHTML = messages[randomIndex];
         }
 
-        // Set initial random message
         setRandomMessage();
-        });
+    });
 
     </script>
 </body>
