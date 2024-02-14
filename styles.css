@@ -29,14 +29,16 @@ body{
 
 .content-wrapper {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
 .brother {
     text-align: center;
+    padding: 0;
+    margin: 0;
     font-size: 18px;
-    margin-bottom: 25px;
     color: #bbbbbb;
     font-style: italic;
 }
@@ -150,12 +152,13 @@ body{
 .rose{
     width: 200px;
     height: 200px;
-    position: absolute;
-    left: calc(65% + 20px);
-    top: 200px;
-    display: inline-block;
+    position: relative;
+    display: flex;
     animation: yidon 5s infinite;
     transform: translateY(40%);
+    left: calc(50% - 100px); /* Adjusted left position to center the rose */
+    margin-bottom: 170px; /* Adjusted margin top */
+
 }
 
 .petal{
